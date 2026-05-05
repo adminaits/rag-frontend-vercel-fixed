@@ -91,7 +91,7 @@ export default function App() {
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-5 md:flex-row md:items-center md:justify-between">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">RAG Knowledge Assistant</h1>
+            <h1 className="text-2xl font-bold tracking-tight">AITS LLM - RAG Knowledge Assistant</h1>
             <p className="mt-1 text-sm text-slate-500">Upload documents, query your backend, and show retrieved sources.</p>
           </div>
           <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm">
