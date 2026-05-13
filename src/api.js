@@ -1,15 +1,30 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "https://backendtest-zrqe.onrender.com";
+
+export async function checkBackendHealth() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/health`, {
+      method: "GET"
+    });
+
+    return response.ok;
+  } catch (error) {
+    console.error("Backend health check failed:", error);
+    return false;
+  }
+}
 
 export async function queryKnowledgeBase(query) {
   const response = await fetch(`${API_BASE_URL}/query`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({ query })
   });
 
   if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(errorText || "Query request failed");
+    throw new Error("Query request failed");
   }
 
   return response.json();
@@ -25,18 +40,8 @@ export async function uploadDocument(file) {
   });
 
   if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(errorText || "Upload request failed");
+    throw new Error("Upload request failed");
   }
 
   return response.json();
-}
-
-export async function checkBackendHealth() {
-  try {
-    const response = await fetch(`${API_BASE_URL}/health`);
-    return response.ok;
-  } catch {
-    return false;
-  }
 }
