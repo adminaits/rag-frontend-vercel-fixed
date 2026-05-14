@@ -3,9 +3,18 @@ const API_BASE_URL =
 
 export async function checkBackendHealth() {
   try {
+    const controller = new AbortController();
+
+    const timeout = setTimeout(() => {
+      controller.abort();
+    }, 10000);
+
     const response = await fetch(`${API_BASE_URL}/health`, {
-      method: "GET"
+      method: "GET",
+      signal: controller.signal
     });
+
+    clearTimeout(timeout);
 
     return response.ok;
   } catch (error) {
