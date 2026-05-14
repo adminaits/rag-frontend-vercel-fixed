@@ -1,5 +1,5 @@
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "https://backendtest-zrqe.onrender.com";
+  import.meta.env.VITE_API_BASE_URL || "https://backendtest-1-ibwg.onrender.com";
 
 export async function checkBackendHealth() {
   try {
