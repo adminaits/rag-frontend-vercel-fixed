@@ -1,20 +1,11 @@
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "https://backendtest-1-ibwg.onrender.com";
+const API_BASE_URL = "https://backendtest-1-ibwg.onrender.com";
 
 export async function checkBackendHealth() {
   try {
-    const controller = new AbortController();
-
-    const timeout = setTimeout(() => {
-      controller.abort();
-    }, 10000);
-
     const response = await fetch(`${API_BASE_URL}/health`, {
       method: "GET",
-      signal: controller.signal
+      cache: "no-store"
     });
-
-    clearTimeout(timeout);
 
     return response.ok;
   } catch (error) {
