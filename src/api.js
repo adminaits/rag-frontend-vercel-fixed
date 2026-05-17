@@ -2,7 +2,7 @@ const API_BASE_URL = "https://backendtest-1-ibwg.onrender.com";
 
 export async function checkBackendHealth() {
   try {
-    const response = await fetch(`${API_BASE_URL}/health`, {
+    const response = await fetch("https://backendtest-1-ibwg.onrender.com/health", {
       method: "GET",
       cache: "no-store"
     });
