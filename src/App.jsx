@@ -159,26 +159,27 @@ function ChatMessage({ message }) {
 
   return (
     <div className={`flex gap-3 ${isUser ? "justify-end" : "justify-start"}`}>
-      {!isUser && <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-900 text-white"><Bot size={18} /></div>}
-      <div className={`max-w-[85%] rounded-2xl px-4 py-3 ${isUser ? "bg-slate-950 text-white" : "bg-slate-100 text-slate-900"}`}>
-        <div className="whitespace-pre-wrap text-sm leading-6">{message.content}</div>
-       // {!isUser && message.sources && message.sources.length > 0 && (
-          //<div className="mt-4 border-t border-slate-300 pt-3">
-          //  <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">Sources</p>
-          //  <div className="space-y-2">
-          //    {message.sources.map((source, index) => (
-            //    <div key={index} className="rounded-xl border border-slate-200 bg-white p-3 text-xs text-slate-700">
-             //     <p className="font-semibold text-slate-900">{source.title || source.filename || source.documentName || `Source ${index + 1}`}</p>
-              //    {source.text && <p className="mt-1 leading-5">{source.text}</p>}
-               //   {source.page && <p className="mt-1 text-slate-500">Page: {source.page}</p>}
-                 // {source.score !== undefined && <p className="mt-1 text-slate-500">Score: {Number(source.score).toFixed(3)}</p>}
-               // </div>
-             // ))}
-        //    </div>
-        //  </div>
-     //   )}
+      {!isUser && (
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-900 text-white">
+          <Bot size={18} />
+        </div>
+      )}
+
+      <div
+        className={`max-w-[85%] rounded-2xl px-4 py-3 ${
+          isUser ? "bg-slate-950 text-white" : "bg-slate-100 text-slate-900"
+        }`}
+      >
+        <div className="whitespace-pre-wrap text-sm leading-6">
+          {message.content}
+        </div>
       </div>
-      {isUser && <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-200 text-slate-700"><User size={18} /></div>}
+
+      {isUser && (
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-200 text-slate-700">
+          <User size={18} />
+        </div>
+      )}
     </div>
   );
 }
